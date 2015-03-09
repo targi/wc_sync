@@ -12,7 +12,6 @@ Finally, you need to enable x-callback-url in the working copy settings. Now you
 
 The first time you run the code it will ask you for the Working Copy key. This will be stored in the Pythonista keychain so you will not need to enter it again.
 
-You will also have to set INSTALL_PATH to match the path where you have installed rxFile.py and rxZip.py.  This should not have a leading or trailing '/'.
 
 3. Instructions
 

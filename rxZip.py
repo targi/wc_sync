@@ -1,11 +1,19 @@
 import zipfile
 import base64
 import os
+import os.path
 import console
 import sys
 import errno
 
-ZIP_FILE = 'wc_sync/repo.zip'
+
+def buildInstallPath():
+	APP_DIR = os.path.realpath(os.path.abspath(os.path.dirname(__file__)))
+	HOME2 = os.path.join(os.environ['HOME'], 'Documents')
+	return os.path.relpath(APP_DIR, HOME2)
+
+INSTALL_PATH = buildInstallPath()
+ZIP_FILE = os.path.join(INSTALL_PATH, 'repo.zip')
 
 path = sys.argv[1]
 
@@ -24,4 +32,3 @@ z = zipfile.ZipFile(zipF)
 z.extractall(os.path.join(os.path.expanduser('~/Documents'), path))
 os.remove(zipF)
 console.hud_alert(path + ' Downloaded')
-

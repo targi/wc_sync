@@ -3,6 +3,7 @@
 import ui
 import editor
 import os
+import os.path
 import console
 import webbrowser as wb
 import urllib
@@ -10,8 +11,13 @@ import base64
 import time
 import keychain
 
-#This should not have leading or trailing /
-INSTALL_PATH = 'wc_sync'
+
+def buildInstallPath():
+	APP_DIR = os.path.realpath(os.path.abspath(os.path.dirname(__file__)))
+	HOME2 = os.path.join(os.environ['HOME'], 'Documents')
+	return os.path.relpath(APP_DIR, HOME2)
+
+INSTALL_PATH = buildInstallPath()
 
 #Key set in checkKey funtion
 key = None
